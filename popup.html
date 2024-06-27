@@ -5,15 +5,23 @@
     <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
-    <form action="post" class="noteForm">
+    <form class="noteForm">
       <h2>Focus Note</h2>
-      <label for="" class="formLabel">
+      <label class="formLabel">
         <span>Enter the note</span>
-        <input type="text" class="note-input" />
+        <input
+          type="text"
+          class="note-input"
+          id="noteInput"
+          placeholder="Type your note here..."
+        />
       </label>
-      <button id="addNote">Add Note</button>
+      <button type="button" id="addNote">Add Note</button>
     </form>
-
+    <div id="notesList" class="notesList">
+      <h3>Focused Notes</h3>
+      <ul id="notes"></ul>
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>
