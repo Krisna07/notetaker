@@ -54,6 +54,13 @@ function createFocusedNotesContainer() {
 
   // Load notes on page load
   loadNotes();
+
+  // Listen for storage changes to update notes in real-time
+  chrome.storage.onChanged.addListener((changes, area) => {
+    if (area === "local" && changes.notes) {
+      loadNotes();
+    }
+  });
 }
 
 // Add the focused notes container to the page
