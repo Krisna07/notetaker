@@ -1,26 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Focus</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Extension</title>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react-icons@4.2.0/lib/esm/index.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <form class="noteForm">
-      <h2>Focus Note</h2>
-      <label class="formLabel">
-        <span>Enter the note</span>
-        <input
-          type="text"
-          class="note-input"
-          id="noteInput"
-          placeholder="Type your note here..."
-        />
-      </label>
-      <button type="button" id="addNote">Add Note</button>
-    </form>
-    <div id="notesList" class="notesList">
-      <h3>Focused Notes</h3>
-      <ul id="notes"></ul>
+  <body class="bg-gray-100">
+    <div
+      id="alert-container"
+      class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-xl">
+        <h2 class="text-xl font-bold mb-4">Sign In Required</h2>
+        <p class="mb-4">
+          You've reached the maximum number of todos. Please sign in to add
+          more.
+        </p>
+        <div class="flex justify-end">
+          <button
+            id="cancel-alert"
+            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto p-4 max-w-md">
+      <h1 class="text-2xl font-bold text-center mb-4">Todo List</h1>
+      <form id="todo-form" class="mb-4">
+        <div class="flex gap-2">
+          <input
+            type="text"
+            id="todo-input"
+            placeholder="Enter a new task"
+            required
+            class="flex-grow px-2 py-1 border rounded"
+          />
+
+          <div class="relative max-w-sm">
+            <div
+              class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+            >
+              <svg
+                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                />
+              </svg>
+            </div>
+            <input
+              datepicker
+              type="text"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Select date"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="bg-blue-500 text-white px-4 py-1 whitespace-nowrap rounded hover:bg-blue-600 active:scale-75 transition-all ease-in-out duration-500"
+          >
+            Add Task
+          </button>
+        </div>
+      </form>
+      <div id="todo-list" class="space-y-4"></div>
     </div>
     <script src="popup.js"></script>
   </body>

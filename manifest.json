@@ -1,25 +1,15 @@
 {
-  "manifest_version": 3,
-  "name": "Focus",
+  "manifest_version": 2,
+  "name": "Todo Extension",
   "version": "1.0",
-  "description": "A note-taking extension that keeps focused notes visible.",
-  "permissions": ["storage", "activeTab", "scripting"],
-  "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "images/icon-16.png",
-      "48": "images/icon-48.png",
-      "128": "images/icon-128.png"
-    }
+  "description": "A complete todo web extension",
+  "permissions": ["storage", "alarms", "notifications"],
+  "browser_action": {
+    "default_popup": "popup.html"
   },
   "background": {
-    "service_worker": "background.js"
+    "scripts": ["background.js", "todoTracker.js"],
+    "persistent": false
   },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
-      "css": ["styles.css"]
-    }
-  ]
+  "content_security_policy": "script-src 'self' https://cdn.tailwindcss.com; object-src 'self'"
 }
